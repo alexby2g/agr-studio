@@ -3,17 +3,17 @@
 
     <!-- NAVBAR -->
     <header class="navbar">
-      <a href="#inicio" class="brand">
+      <a class="brand" @click.prevent="scrollToSection('inicio')">
         <img src="/logo.png" alt="AGR Logo" />
         <span>AGR</span>
       </a>
 
       <nav class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#casos">Casos</a>
-        <a href="#tecnologias">Tecnologías</a>
-        <a href="#contacto">Contacto</a>
+        <a @click.prevent="scrollToSection('inicio')">Inicio</a>
+        <a @click.prevent="scrollToSection('servicios')">Servicios</a>
+        <a @click.prevent="scrollToSection('casos')">Casos</a>
+        <a @click.prevent="scrollToSection('tecnologias')">Tecnologías</a>
+        <a @click.prevent="scrollToSection('contacto')">Contacto</a>
       </nav>
     </header>
 
@@ -44,7 +44,7 @@
             icon="work"
             class="btn-primary"
             unelevated
-            href="#casos"
+            @click="scrollToSection('casos')"
           />
 
           <q-btn
@@ -52,7 +52,7 @@
             icon="chat"
             class="btn-secondary"
             unelevated
-            href="#contacto"
+            @click="scrollToSection('contacto')"
           />
         </div>
       </div>
@@ -349,6 +349,16 @@
 </template>
 
 <script setup>
+function scrollToSection(id) {
+  const section = document.getElementById(id)
+
+  if (section) {
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 </script>
 
 <style scoped>
@@ -387,6 +397,7 @@
   letter-spacing: 4px;
   color: white;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .brand img {
@@ -407,6 +418,7 @@
   text-decoration: none;
   font-weight: 700;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .nav-links a:hover {
