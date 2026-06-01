@@ -12,6 +12,7 @@
         <a @click.prevent="scrollToSection('inicio')">Inicio</a>
         <a @click.prevent="scrollToSection('servicios')">Servicios</a>
         <a @click.prevent="scrollToSection('casos')">Casos</a>
+        <a @click.prevent="scrollToSection('sobre')">Sobre AGR</a>
         <a @click.prevent="scrollToSection('tecnologias')">Tecnologías</a>
         <a @click.prevent="scrollToSection('contacto')">Contacto</a>
       </nav>
@@ -37,6 +38,10 @@
           Desarrollo de sistemas web, aplicaciones móviles y soluciones digitales
           para empresas, emprendedores y organizaciones.
         </p>
+
+        <div class="hero-location">
+          📍 Trinidad - Beni, Bolivia
+        </div>
 
         <div class="actions">
           <q-btn
@@ -243,6 +248,68 @@
       </q-card>
     </section>
 
+    <!-- SOBRE AGR -->
+    <section id="sobre" class="section about-section">
+      <div class="section-title">
+        <span>Sobre AGR Studio</span>
+        <h2>Desarrollo de sistemas para negocios que quieren crecer</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card about-main">
+          <div class="about-logo">
+            <img src="/logo.png" alt="AGR Studio" />
+          </div>
+
+          <h3>AGR Studio</h3>
+
+          <p>
+            AGR Studio es una marca enfocada en crear sistemas web, aplicaciones móviles
+            y soluciones digitales personalizadas para empresas, emprendimientos y
+            organizaciones que buscan modernizar sus procesos.
+          </p>
+
+          <p>
+            Nuestro objetivo es transformar ideas en herramientas reales, funcionales
+            y listas para utilizarse en negocios del mundo real.
+          </p>
+
+          <div class="about-contact">
+            <span>📍 Trinidad - Beni, Bolivia</span>
+            <span>📧 alexby2g@gmail.com</span>
+            <span>📱 +591 63285735</span>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <q-icon name="developer_mode" size="46px" class="icon-blue" />
+          <h3>Desarrollo a medida</h3>
+          <p>
+            Cada sistema se adapta a las necesidades del negocio, evitando soluciones
+            genéricas que no encajan con la realidad del cliente.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <q-icon name="cloud_done" size="46px" class="icon-purple" />
+          <h3>Publicación en internet</h3>
+          <p>
+            Implementamos sistemas listos para funcionar en la web, con acceso desde
+            computadora, tablet o celular.
+          </p>
+        </div>
+
+        <div class="about-card">
+          <q-icon name="support_agent" size="46px" class="icon-cyan" />
+          <h3>Acompañamiento</h3>
+          <p>
+            Acompañamos el proceso desde la idea inicial hasta la implementación,
+            ajustes y mejoras del sistema.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- POR QUE AGR -->
     <section class="section why-section">
       <div class="section-title">
@@ -312,15 +379,21 @@
         <h2>¿Tienes una idea?</h2>
 
         <p>
-          En AGR la convertimos en un sistema moderno, funcional y listo para crecer.
+          En AGR Studio la convertimos en un sistema moderno, funcional y listo para crecer.
         </p>
+
+        <div class="contact-info">
+          <span>📍 Trinidad - Beni, Bolivia</span>
+          <span>📧 alexby2g@gmail.com</span>
+          <span>📱 +591 63285735</span>
+        </div>
 
         <q-btn
           label="Contactar por WhatsApp"
           icon="chat"
           class="whatsapp-btn"
           unelevated
-          href="https://wa.me/59163285735?text=Hola%20AGR,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+          href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
           target="_blank"
         />
       </div>
@@ -329,11 +402,17 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div>
-        <strong>AGR</strong>
+        <strong>AGR Studio</strong>
         <span>Transformamos ideas en sistemas.</span>
       </div>
 
-      <p>© 2026 AGR. Desarrollo web, apps móviles y soluciones digitales.</p>
+      <div class="footer-contact">
+        <span>📍 Trinidad - Beni</span>
+        <span>📧 alexby2g@gmail.com</span>
+        <span>📱 +591 63285735</span>
+      </div>
+
+      <p>© 2026 AGR Studio. Desarrollo web, apps móviles y soluciones digitales.</p>
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
@@ -341,7 +420,7 @@
       round
       icon="chat"
       class="floating-whatsapp"
-      href="https://wa.me/59163285735?text=Hola%20AGR,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+      href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
       target="_blank"
     />
 
@@ -410,7 +489,7 @@ function scrollToSection(id) {
 
 .nav-links {
   display: flex;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-links a {
@@ -505,6 +584,17 @@ function scrollToSection(id) {
   line-height: 1.7;
   max-width: 760px;
   margin: auto;
+}
+
+.hero-location {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #e7e7f5;
+  font-weight: 700;
 }
 
 .actions {
@@ -615,7 +705,8 @@ function scrollToSection(id) {
 
 .glass-card,
 .project-card,
-.case-card {
+.case-card,
+.about-card {
   border-radius: 28px;
   background: rgba(255,255,255,0.055);
   border: 1px solid rgba(255,255,255,0.1);
@@ -631,7 +722,8 @@ function scrollToSection(id) {
 
 .glass-card:hover,
 .project-card:hover,
-.case-card:hover {
+.case-card:hover,
+.about-card:hover {
   transform: translateY(-8px);
   border-color: rgba(0,170,255,0.45);
   box-shadow: 0 22px 60px rgba(0,170,255,.12);
@@ -651,7 +743,8 @@ function scrollToSection(id) {
 
 .glass-card h3,
 .project-card h3,
-.case-info h3 {
+.case-info h3,
+.about-card h3 {
   font-size: 1.8rem;
   margin: 18px 0 12px;
   font-weight: 800;
@@ -659,7 +752,8 @@ function scrollToSection(id) {
 
 .glass-card p,
 .project-card p,
-.case-info p {
+.case-info p,
+.about-card p {
   color: #c9c9d8;
   line-height: 1.7;
 }
@@ -771,6 +865,62 @@ function scrollToSection(id) {
   color: white;
 }
 
+/* ABOUT */
+.about-section {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0,170,255,0.10), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgba(138,43,226,0.12), transparent 34%),
+    rgba(255,255,255,0.025);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 24px;
+}
+
+.about-card {
+  padding: 32px;
+}
+
+.about-main {
+  grid-row: span 2;
+  background:
+    radial-gradient(circle at top left, rgba(0,170,255,0.18), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(138,43,226,0.18), transparent 35%),
+    rgba(255,255,255,0.065);
+}
+
+.about-logo {
+  width: 88px;
+  height: 88px;
+  padding: 5px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(0,170,255,.8), rgba(138,43,226,.8));
+}
+
+.about-logo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+}
+
+.about-contact {
+  display: grid;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.about-contact span {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.08);
+  color: #f1f1ff;
+  font-weight: 700;
+}
+
 /* WHY */
 .why-section {
   background: rgba(255,255,255,0.025);
@@ -857,6 +1007,23 @@ function scrollToSection(id) {
   font-size: 1.15rem;
 }
 
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.contact-info span {
+  padding: 10px 15px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #f1f1ff;
+  font-weight: 700;
+}
+
 .whatsapp-btn {
   margin-top: 28px;
   background: linear-gradient(90deg, #00c853, #00e676);
@@ -871,11 +1038,10 @@ function scrollToSection(id) {
   padding: 34px 8%;
   border-top: 1px solid rgba(255,255,255,0.08);
   background: rgba(0,0,0,.28);
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   gap: 18px;
-  flex-wrap: wrap;
 }
 
 .footer div {
@@ -894,6 +1060,16 @@ function scrollToSection(id) {
   margin: 0;
 }
 
+.footer p {
+  text-align: right;
+}
+
+.footer-contact {
+  text-align: center;
+  gap: 5px;
+  font-size: .9rem;
+}
+
 /* WHATSAPP FLOTANTE */
 .floating-whatsapp {
   position: fixed;
@@ -908,6 +1084,25 @@ function scrollToSection(id) {
 }
 
 /* RESPONSIVE */
+@media (max-width: 1100px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-links a {
+    font-size: .92rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-main {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
 @media (max-width: 1000px) {
   .case-grid,
   .case-grid.reverse {
@@ -956,6 +1151,29 @@ function scrollToSection(id) {
 
   .feature-list {
     grid-template-columns: 1fr;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer p {
+    text-align: center;
+  }
+
+  .footer div {
+    align-items: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-main {
+    grid-column: auto;
   }
 }
 
