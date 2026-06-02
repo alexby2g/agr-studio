@@ -1,6 +1,14 @@
 <template>
   <q-page class="page text-white">
 
+    <!-- FONDO PREMIUM -->
+    <div class="animated-bg">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <!-- NAVBAR -->
     <header class="navbar">
       <a class="brand" @click.prevent="scrollToSection('inicio')">
@@ -26,7 +34,7 @@
     </header>
 
     <!-- HERO -->
-    <section id="inicio" class="hero">
+    <section id="inicio" class="hero reveal-section">
       <div class="hero-glow glow-one"></div>
       <div class="hero-glow glow-two"></div>
 
@@ -54,7 +62,7 @@
           <q-btn
             label="Ver productos"
             icon="work"
-            class="btn-primary"
+            class="btn-primary shine-btn"
             unelevated
             @click="scrollToSection('productos')"
           />
@@ -62,7 +70,7 @@
           <q-btn
             label="Solicitar sistema"
             icon="chat"
-            class="btn-secondary"
+            class="btn-secondary shine-btn"
             unelevated
             @click="scrollToSection('contacto')"
           />
@@ -78,15 +86,15 @@
     </section>
 
     <!-- STATS ANIMADOS -->
-    <section ref="statsSectionRef" class="stats-section">
-      <div class="stat-card" v-for="stat in stats" :key="stat.label">
+    <section ref="statsSectionRef" class="stats-section reveal-section">
+      <div class="stat-card premium-card" v-for="stat in stats" :key="stat.label">
         <strong>{{ stat.prefix }}{{ stat.display }}{{ stat.suffix }}</strong>
         <span>{{ stat.label }}</span>
       </div>
     </section>
 
     <!-- SERVICIOS -->
-    <section id="servicios" class="section">
+    <section id="servicios" class="section reveal-section">
       <div class="section-title">
         <span>Servicios</span>
         <h2>Soluciones digitales para empresas y emprendimientos</h2>
@@ -94,9 +102,9 @@
 
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-md-4">
-          <q-card class="glass-card">
+          <q-card class="glass-card premium-card">
             <q-card-section>
-              <q-icon name="language" size="46px" class="icon-blue" />
+              <q-icon name="language" size="46px" class="icon-blue floating-icon" />
               <h3>Sistemas Web</h3>
               <p>
                 Desarrollo de plataformas administrativas para gestionar clientes,
@@ -107,9 +115,9 @@
         </div>
 
         <div class="col-12 col-md-4">
-          <q-card class="glass-card">
+          <q-card class="glass-card premium-card">
             <q-card-section>
-              <q-icon name="phone_android" size="46px" class="icon-purple" />
+              <q-icon name="phone_android" size="46px" class="icon-purple floating-icon" />
               <h3>Aplicaciones Android</h3>
               <p>
                 Apps móviles conectadas a sistemas web, pensadas para negocios
@@ -120,9 +128,9 @@
         </div>
 
         <div class="col-12 col-md-4">
-          <q-card class="glass-card">
+          <q-card class="glass-card premium-card">
             <q-card-section>
-              <q-icon name="auto_awesome" size="46px" class="icon-cyan" />
+              <q-icon name="auto_awesome" size="46px" class="icon-cyan floating-icon" />
               <h3>Automatización</h3>
               <p>
                 Digitalización de procesos, notificaciones, paneles administrativos,
@@ -135,74 +143,31 @@
     </section>
 
     <!-- PROCESO DE TRABAJO -->
-    <section id="proceso" class="section process-section">
+    <section id="proceso" class="section process-section reveal-section">
       <div class="section-title">
         <span>Proceso de trabajo</span>
         <h2>Cómo convertimos una idea en un sistema real</h2>
       </div>
 
       <div class="process-grid">
-        <div class="process-card">
-          <div class="process-number">01</div>
-          <q-icon name="search" size="42px" class="icon-blue" />
-          <h3>Análisis</h3>
-          <p>
-            Escuchamos la necesidad del negocio, identificamos procesos y definimos
-            qué debe resolver el sistema.
-          </p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">02</div>
-          <q-icon name="draw" size="42px" class="icon-purple" />
-          <h3>Diseño</h3>
-          <p>
-            Organizamos pantallas, módulos, flujo de trabajo y experiencia de usuario
-            antes de construir.
-          </p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">03</div>
-          <q-icon name="code" size="42px" class="icon-cyan" />
-          <h3>Desarrollo</h3>
-          <p>
-            Programamos frontend, backend, base de datos, seguridad y funcionalidades
-            principales.
-          </p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">04</div>
-          <q-icon name="rocket_launch" size="42px" class="icon-blue" />
-          <h3>Implementación</h3>
-          <p>
-            Publicamos el sistema en la nube, configuramos el acceso y dejamos la
-            solución lista para operar.
-          </p>
-        </div>
-
-        <div class="process-card">
-          <div class="process-number">05</div>
-          <q-icon name="support_agent" size="42px" class="icon-purple" />
-          <h3>Soporte</h3>
-          <p>
-            Acompañamos el crecimiento del sistema con mejoras, ajustes y nuevas
-            funcionalidades.
-          </p>
+        <div class="process-card premium-card" v-for="item in processItems" :key="item.number">
+          <div class="process-number">{{ item.number }}</div>
+          <q-icon :name="item.icon" size="42px" :class="item.iconClass" class="floating-icon" />
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
         </div>
       </div>
     </section>
 
     <!-- PRODUCTOS -->
-    <section id="productos" class="section cases-section">
+    <section id="productos" class="section cases-section reveal-section">
       <div class="section-title">
         <span>Productos AGR Studio</span>
         <h2>Soluciones desarrolladas para negocios reales</h2>
       </div>
 
       <!-- AUREA -->
-      <q-card class="case-card case-aurea">
+      <q-card class="case-card case-aurea premium-card">
         <div class="case-grid">
           <div class="case-info">
             <div class="project-top">
@@ -254,7 +219,7 @@
               <q-btn
                 label="Ver Producto"
                 icon="visibility"
-                class="btn-primary"
+                class="btn-primary shine-btn"
                 unelevated
                 to="/proyecto/aurea"
               />
@@ -301,7 +266,7 @@
       </q-card>
 
       <!-- CARLAFIT -->
-      <q-card class="case-card case-fit">
+      <q-card class="case-card case-fit premium-card">
         <div class="case-grid reverse">
           <div class="case-gallery">
             <div class="screenshot-frame main-shot" @click="openGallery('carlafit', 0)">
@@ -379,7 +344,7 @@
               <q-btn
                 label="Ver Producto"
                 icon="visibility"
-                class="btn-secondary"
+                class="btn-secondary shine-btn"
                 unelevated
                 to="/proyecto/carlafit"
               />
@@ -399,14 +364,14 @@
     </section>
 
     <!-- SOBRE AGR -->
-    <section id="sobre" class="section about-section">
+    <section id="sobre" class="section about-section reveal-section">
       <div class="section-title">
         <span>Sobre AGR Studio</span>
         <h2>Software studio enfocado en soluciones reales</h2>
       </div>
 
       <div class="about-grid">
-        <div class="about-card about-main">
+        <div class="about-card about-main premium-card">
           <div class="about-logo">
             <img src="/logo.png" alt="AGR Studio" />
           </div>
@@ -436,8 +401,8 @@
           </div>
         </div>
 
-        <div class="about-card">
-          <q-icon name="developer_mode" size="46px" class="icon-blue" />
+        <div class="about-card premium-card">
+          <q-icon name="developer_mode" size="46px" class="icon-blue floating-icon" />
           <h3>Desarrollo a medida</h3>
           <p>
             Creamos sistemas adaptados a la operación real de cada negocio, evitando
@@ -445,8 +410,8 @@
           </p>
         </div>
 
-        <div class="about-card">
-          <q-icon name="cloud_done" size="46px" class="icon-purple" />
+        <div class="about-card premium-card">
+          <q-icon name="cloud_done" size="46px" class="icon-purple floating-icon" />
           <h3>Despliegue profesional</h3>
           <p>
             Publicamos sistemas en plataformas modernas para que puedan utilizarse
@@ -454,8 +419,8 @@
           </p>
         </div>
 
-        <div class="about-card">
-          <q-icon name="support_agent" size="46px" class="icon-cyan" />
+        <div class="about-card premium-card">
+          <q-icon name="support_agent" size="46px" class="icon-cyan floating-icon" />
           <h3>Soporte continuo</h3>
           <p>
             Acompañamos el crecimiento del sistema con ajustes, mejoras, mantenimiento
@@ -466,7 +431,7 @@
     </section>
 
     <!-- POR QUE AGR -->
-    <section class="section why-section">
+    <section class="section why-section reveal-section">
       <div class="section-title">
         <span>AGR Studio</span>
         <h2>¿Por qué elegirnos?</h2>
@@ -474,7 +439,7 @@
 
       <div class="row q-col-gutter-lg">
         <div class="col-12 col-md-3">
-          <div class="why-card">
+          <div class="why-card premium-card">
             <q-icon name="bolt" size="38px" />
             <h4>Ágil</h4>
             <p>Desarrollo enfocado en soluciones útiles, claras y funcionales.</p>
@@ -482,7 +447,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-          <div class="why-card">
+          <div class="why-card premium-card">
             <q-icon name="devices" size="38px" />
             <h4>Multiplataforma</h4>
             <p>Sistemas adaptados para web, escritorio, tablet y móvil.</p>
@@ -490,7 +455,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-          <div class="why-card">
+          <div class="why-card premium-card">
             <q-icon name="security" size="38px" />
             <h4>Seguro</h4>
             <p>Autenticación, bases de datos y estructura pensada para producción.</p>
@@ -498,7 +463,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-          <div class="why-card">
+          <div class="why-card premium-card">
             <q-icon name="rocket_launch" size="38px" />
             <h4>Listo para operar</h4>
             <p>Entrega, publicación y acompañamiento para uso real del sistema.</p>
@@ -508,29 +473,20 @@
     </section>
 
     <!-- TECNOLOGIAS -->
-    <section id="tecnologias" class="section tech-section">
+    <section id="tecnologias" class="section tech-section reveal-section">
       <div class="section-title">
         <span>Stack tecnológico</span>
         <h2>Tecnologías utilizadas en nuestros productos</h2>
       </div>
 
       <div class="tech-grid">
-        <div class="tech-item">Laravel</div>
-        <div class="tech-item">Quasar</div>
-        <div class="tech-item">Vue.js</div>
-        <div class="tech-item">PostgreSQL</div>
-        <div class="tech-item">MySQL</div>
-        <div class="tech-item">Capacitor</div>
-        <div class="tech-item">Android</div>
-        <div class="tech-item">Render</div>
-        <div class="tech-item">Vercel</div>
-        <div class="tech-item">GitHub</div>
+        <div class="tech-item" v-for="tech in techs" :key="tech">{{ tech }}</div>
       </div>
     </section>
 
     <!-- CONTACTO -->
-    <section id="contacto" class="section contact-section">
-      <div class="contact-box">
+    <section id="contacto" class="section contact-section reveal-section">
+      <div class="contact-box premium-card">
         <h2>¿Necesitas un sistema para tu negocio?</h2>
 
         <p>
@@ -545,40 +501,10 @@
         </div>
 
         <div class="contact-buttons">
-          <q-btn
-            label="WhatsApp"
-            icon="chat"
-            class="whatsapp-btn"
-            unelevated
-            :href="whatsappUrl"
-            target="_blank"
-          />
-
-          <q-btn
-            label="Instagram"
-            icon="photo_camera"
-            class="instagram-btn"
-            unelevated
-            :href="instagramUrl"
-            target="_blank"
-          />
-
-          <q-btn
-            label="Facebook"
-            icon="public"
-            class="facebook-btn"
-            unelevated
-            :href="facebookUrl"
-            target="_blank"
-          />
-
-          <q-btn
-            label="Email"
-            icon="mail"
-            class="email-btn"
-            unelevated
-            :href="emailUrl"
-          />
+          <q-btn label="WhatsApp" icon="chat" class="whatsapp-btn shine-btn" unelevated :href="whatsappUrl" target="_blank" />
+          <q-btn label="Instagram" icon="photo_camera" class="instagram-btn shine-btn" unelevated :href="instagramUrl" target="_blank" />
+          <q-btn label="Facebook" icon="public" class="facebook-btn shine-btn" unelevated :href="facebookUrl" target="_blank" />
+          <q-btn label="Email" icon="mail" class="email-btn shine-btn" unelevated :href="emailUrl" />
         </div>
       </div>
     </section>
@@ -604,13 +530,7 @@
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
-    <q-btn
-      round
-      icon="chat"
-      class="floating-whatsapp"
-      :href="whatsappUrl"
-      target="_blank"
-    />
+    <q-btn round icon="chat" class="floating-whatsapp" :href="whatsappUrl" target="_blank" />
 
     <!-- MODAL GALERIA -->
     <q-dialog v-model="galleryOpen" maximized>
@@ -665,41 +585,67 @@ const emailUrl = 'mailto:alexby2g@gmail.com?subject=Solicitud%20de%20sistema%20A
 
 const statsSectionRef = ref(null)
 const statsStarted = ref(false)
-
-const stats = ref([
-  {
-    target: 2,
-    display: 0,
-    prefix: '',
-    suffix: '+',
-    label: 'Productos desarrollados'
-  },
-  {
-    target: 2,
-    display: 0,
-    prefix: '',
-    suffix: '',
-    label: 'Soluciones web y Android'
-  },
-  {
-    target: 100,
-    display: 0,
-    prefix: '',
-    suffix: '%',
-    label: 'Desarrollo personalizado'
-  },
-  {
-    target: 24,
-    display: 0,
-    prefix: '',
-    suffix: '/7',
-    label: 'Presencia digital'
-  }
-])
-
 const galleryOpen = ref(false)
 const currentGalleryKey = ref('aurea')
 const currentImageIndex = ref(0)
+
+const stats = ref([
+  { target: 2, display: 0, prefix: '', suffix: '+', label: 'Productos desarrollados' },
+  { target: 2, display: 0, prefix: '', suffix: '', label: 'Soluciones web y Android' },
+  { target: 100, display: 0, prefix: '', suffix: '%', label: 'Desarrollo personalizado' },
+  { target: 24, display: 0, prefix: '', suffix: '/7', label: 'Presencia digital' }
+])
+
+const processItems = [
+  {
+    number: '01',
+    icon: 'search',
+    iconClass: 'icon-blue',
+    title: 'Análisis',
+    description: 'Escuchamos la necesidad del negocio, identificamos procesos y definimos qué debe resolver el sistema.'
+  },
+  {
+    number: '02',
+    icon: 'draw',
+    iconClass: 'icon-purple',
+    title: 'Diseño',
+    description: 'Organizamos pantallas, módulos, flujo de trabajo y experiencia de usuario antes de construir.'
+  },
+  {
+    number: '03',
+    icon: 'code',
+    iconClass: 'icon-cyan',
+    title: 'Desarrollo',
+    description: 'Programamos frontend, backend, base de datos, seguridad y funcionalidades principales.'
+  },
+  {
+    number: '04',
+    icon: 'rocket_launch',
+    iconClass: 'icon-blue',
+    title: 'Implementación',
+    description: 'Publicamos el sistema en la nube, configuramos el acceso y dejamos la solución lista para operar.'
+  },
+  {
+    number: '05',
+    icon: 'support_agent',
+    iconClass: 'icon-purple',
+    title: 'Soporte',
+    description: 'Acompañamos el crecimiento del sistema con mejoras, ajustes y nuevas funcionalidades.'
+  }
+]
+
+const techs = [
+  'Laravel',
+  'Quasar',
+  'Vue.js',
+  'PostgreSQL',
+  'MySQL',
+  'Capacitor',
+  'Android',
+  'Render',
+  'Vercel',
+  'GitHub'
+]
 
 const galleries = {
   aurea: {
@@ -782,26 +728,41 @@ function scrollToSection(id) {
 }
 
 onMounted(() => {
-  if (!statsSectionRef.value) return
+  if (statsSectionRef.value) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          animateStats()
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
 
-  const observer = new IntersectionObserver(
+    observer.observe(statsSectionRef.value)
+  }
+
+  const revealElements = document.querySelectorAll('.reveal-section')
+
+  const revealObserver = new IntersectionObserver(
     (entries) => {
-      if (entries[0].isIntersecting) {
-        animateStats()
-        observer.disconnect()
-      }
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          revealObserver.unobserve(entry.target)
+        }
+      })
     },
-    {
-      threshold: 0.3
-    }
+    { threshold: 0.12 }
   )
 
-  observer.observe(statsSectionRef.value)
+  revealElements.forEach((el) => revealObserver.observe(el))
 })
 </script>
 
 <style scoped>
 .page {
+  position: relative;
   min-height: 100vh;
   background:
     radial-gradient(circle at 15% 8%, rgba(0, 132, 255, 0.30), transparent 28%),
@@ -810,6 +771,88 @@ onMounted(() => {
     #07070c;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.animated-bg span {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,170,255,0.22), transparent 70%);
+  filter: blur(6px);
+  animation: floatParticle 14s infinite ease-in-out;
+}
+
+.animated-bg span:nth-child(1) {
+  top: 18%;
+  left: 8%;
+}
+
+.animated-bg span:nth-child(2) {
+  top: 58%;
+  left: 82%;
+  background: radial-gradient(circle, rgba(138,43,226,0.22), transparent 70%);
+  animation-delay: 2s;
+}
+
+.animated-bg span:nth-child(3) {
+  top: 78%;
+  left: 16%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(0,229,255,0.18), transparent 70%);
+  animation-delay: 4s;
+}
+
+.animated-bg span:nth-child(4) {
+  top: 30%;
+  left: 72%;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 70%);
+  animation-delay: 6s;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: .45;
+  }
+
+  50% {
+    transform: translate3d(28px, -38px, 0) scale(1.15);
+    opacity: .9;
+  }
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal-section.visible,
+.hero.reveal-section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar,
+.hero,
+.stats-section,
+.section,
+.footer,
+.floating-whatsapp {
+  position: relative;
+  z-index: 1;
 }
 
 .navbar {
@@ -821,9 +864,10 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(7, 7, 12, 0.82);
-  backdrop-filter: blur(16px);
+  background: rgba(7, 7, 12, 0.76);
+  backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 45px rgba(0,0,0,.22);
 }
 
 .brand {
@@ -844,6 +888,17 @@ onMounted(() => {
   border-radius: 13px;
   object-fit: cover;
   box-shadow: 0 0 18px rgba(0, 170, 255, 0.30);
+  animation: logoFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .nav-links {
@@ -852,6 +907,7 @@ onMounted(() => {
 }
 
 .nav-links a {
+  position: relative;
   color: #d8d8d8;
   text-decoration: none;
   font-weight: 700;
@@ -859,8 +915,24 @@ onMounted(() => {
   cursor: pointer;
 }
 
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #00aaff, #9b30ff);
+  transition: .3s;
+  border-radius: 99px;
+}
+
 .nav-links a:hover {
   color: #00aaff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-social {
@@ -872,6 +944,12 @@ onMounted(() => {
 .nav-social .q-btn {
   color: #ffffff;
   background: rgba(255,255,255,0.06);
+  transition: .3s;
+}
+
+.nav-social .q-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(0,170,255,0.16);
 }
 
 .hero {
@@ -901,6 +979,17 @@ onMounted(() => {
   box-shadow:
     0 0 30px rgba(0,170,255,.35),
     0 0 70px rgba(138,43,226,.25);
+  animation: heroLogoFloat 5s ease-in-out infinite;
+}
+
+@keyframes heroLogoFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
 }
 
 .hero-logo {
@@ -917,13 +1006,24 @@ onMounted(() => {
   font-weight: 900;
   letter-spacing: 14px;
   background: linear-gradient(90deg, #00aaff, #ffffff, #9b30ff);
+  background-size: 240% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow:
     0 0 20px rgba(0,170,255,.5),
     0 0 40px rgba(0,170,255,.3),
     0 0 60px rgba(138,43,226,.3);
-  animation: glow 3s ease-in-out infinite;
+  animation: glow 3s ease-in-out infinite, gradientMove 5s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 240% center;
+  }
 }
 
 @keyframes glow {
@@ -964,6 +1064,7 @@ onMounted(() => {
   border: 1px solid rgba(255,255,255,0.12);
   color: #e7e7f5;
   font-weight: 700;
+  box-shadow: 0 0 22px rgba(0,170,255,.08);
 }
 
 .actions,
@@ -1010,6 +1111,8 @@ onMounted(() => {
 .btn-primary,
 .btn-secondary,
 .btn-outline {
+  position: relative;
+  overflow: hidden;
   color: white;
   border-radius: 16px;
   padding: 11px 20px;
@@ -1030,11 +1133,27 @@ onMounted(() => {
   border: 1px solid rgba(255,255,255,0.14);
 }
 
+.shine-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
+  transform: skewX(-18deg);
+  transition: .65s;
+}
+
+.shine-btn:hover::before {
+  left: 130%;
+}
+
 .btn-primary:hover,
 .btn-secondary:hover,
 .btn-outline:hover {
   transform: translateY(-3px);
-  filter: brightness(1.1);
+  filter: brightness(1.12);
 }
 
 .hero-glow {
@@ -1044,6 +1163,7 @@ onMounted(() => {
   filter: blur(85px);
   opacity: 0.46;
   border-radius: 50%;
+  animation: pulseGlow 6s ease-in-out infinite;
 }
 
 .glow-one {
@@ -1056,6 +1176,19 @@ onMounted(() => {
   background: #8a2be2;
   right: -100px;
   bottom: 70px;
+  animation-delay: 2s;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: .42;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: .62;
+  }
 }
 
 .stats-section {
@@ -1124,6 +1257,48 @@ onMounted(() => {
   transition: 0.35s;
 }
 
+.premium-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0,170,255,.55), transparent 30%, rgba(138,43,226,.55));
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: .35s;
+  pointer-events: none;
+}
+
+.premium-card:hover::after {
+  opacity: 1;
+}
+
+.premium-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -70%;
+  width: 55%;
+  height: 180%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.07), transparent);
+  transform: rotate(20deg);
+  transition: .75s;
+  pointer-events: none;
+}
+
+.premium-card:hover::before {
+  left: 130%;
+}
+
 .glass-card {
   min-height: 265px;
 }
@@ -1132,10 +1307,14 @@ onMounted(() => {
 .project-card:hover,
 .case-card:hover,
 .about-card:hover,
-.process-card:hover {
-  transform: translateY(-8px);
+.process-card:hover,
+.stat-card:hover,
+.why-card:hover {
+  transform: translateY(-9px);
   border-color: rgba(0,170,255,0.45);
-  box-shadow: 0 22px 60px rgba(0,170,255,.12);
+  box-shadow:
+    0 22px 60px rgba(0,170,255,.13),
+    0 0 0 1px rgba(255,255,255,.04);
 }
 
 .icon-blue {
@@ -1148,6 +1327,20 @@ onMounted(() => {
 
 .icon-cyan {
   color: #00e5ff;
+}
+
+.floating-icon {
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 .glass-card h3,
@@ -1228,6 +1421,11 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transition: .35s;
+}
+
+.project-logo-wrap:hover {
+  transform: scale(1.05) rotate(1deg);
 }
 
 .project-logo-wrap img {
@@ -1267,6 +1465,7 @@ onMounted(() => {
 .status-badge.online {
   background: rgba(0,200,120,0.16);
   color: #3cffaa;
+  box-shadow: 0 0 16px rgba(0,200,120,.12);
 }
 
 .project-meta {
@@ -1282,6 +1481,12 @@ onMounted(() => {
   color: #f1f1ff;
   font-weight: 700;
   font-size: .93rem;
+  transition: .3s;
+}
+
+.project-meta span:hover {
+  background: rgba(0,170,255,0.13);
+  transform: translateX(4px);
 }
 
 .cases-section {
@@ -1339,6 +1544,12 @@ onMounted(() => {
   cursor: pointer;
   border: 1px solid rgba(255,255,255,0.13);
   box-shadow: 0 18px 45px rgba(0,0,0,.35);
+  transition: .35s;
+}
+
+.screenshot-frame:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 65px rgba(0,170,255,.18);
 }
 
 .screenshot-frame img {
@@ -1403,6 +1614,12 @@ onMounted(() => {
 .chips .q-chip {
   background: rgba(255,255,255,0.10);
   color: white;
+  transition: .3s;
+}
+
+.chips .q-chip:hover {
+  transform: translateY(-2px);
+  background: rgba(0,170,255,0.18);
 }
 
 .about-section {
@@ -1436,6 +1653,7 @@ onMounted(() => {
   padding: 5px;
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(0,170,255,.8), rgba(138,43,226,.8));
+  animation: logoFloat 4s ease-in-out infinite;
 }
 
 .about-logo img {
@@ -1458,6 +1676,12 @@ onMounted(() => {
   background: rgba(255,255,255,0.08);
   color: #f1f1ff;
   font-weight: 700;
+  transition: .3s;
+}
+
+.about-contact span:hover {
+  background: rgba(0,170,255,0.13);
+  transform: translateX(4px);
 }
 
 .about-social {
@@ -1479,11 +1703,6 @@ onMounted(() => {
   border: 1px solid rgba(255,255,255,0.10);
   text-align: center;
   transition: .3s;
-}
-
-.why-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(138,43,226,.45);
 }
 
 .why-card .q-icon {
@@ -1521,9 +1740,10 @@ onMounted(() => {
 }
 
 .tech-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.03);
   background: rgba(0,170,255,0.12);
   border-color: rgba(0,170,255,0.35);
+  box-shadow: 0 18px 38px rgba(0,170,255,.12);
 }
 
 .contact-box {
@@ -1653,6 +1873,19 @@ onMounted(() => {
   background: linear-gradient(135deg, #00c853, #00e676);
   color: #061006;
   box-shadow: 0 0 24px rgba(0, 230, 118, .45);
+  animation: whatsappPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes whatsappPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 24px rgba(0, 230, 118, .45);
+  }
+
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 34px rgba(0, 230, 118, .65);
+  }
 }
 
 .gallery-dialog {
