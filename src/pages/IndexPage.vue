@@ -225,11 +225,30 @@
           </div>
 
           <div class="case-gallery">
-            <img src="/proyectos/aurea-dashboard.png" alt="Dashboard AUREA" class="main-shot" />
+            <div class="screenshot-frame main-shot" @click="openGallery('aurea', 0)">
+              <img src="/proyectos/aurea-dashboard.png" alt="Dashboard AUREA" />
+              <div class="image-overlay">
+                <q-icon name="zoom_in" size="34px" />
+                <span>Click para ampliar</span>
+              </div>
+            </div>
 
             <div class="mini-shots">
-              <img src="/proyectos/aurea-clientes.png" alt="Clientes AUREA" />
-              <img src="/proyectos/aurea-citas.png" alt="Citas AUREA" />
+              <div class="screenshot-frame" @click="openGallery('aurea', 1)">
+                <img src="/proyectos/aurea-clientes.png" alt="Clientes AUREA" />
+                <div class="image-overlay">
+                  <q-icon name="zoom_in" size="28px" />
+                  <span>Ampliar</span>
+                </div>
+              </div>
+
+              <div class="screenshot-frame" @click="openGallery('aurea', 2)">
+                <img src="/proyectos/aurea-citas.png" alt="Citas AUREA" />
+                <div class="image-overlay">
+                  <q-icon name="zoom_in" size="28px" />
+                  <span>Ampliar</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -239,11 +258,30 @@
       <q-card class="case-card case-fit">
         <div class="case-grid reverse">
           <div class="case-gallery">
-            <img src="/proyectos/carlafit-dashboard.png" alt="Dashboard CarlaFit" class="main-shot" />
+            <div class="screenshot-frame main-shot" @click="openGallery('carlafit', 0)">
+              <img src="/proyectos/carlafit-dashboard.png" alt="Dashboard CarlaFit" />
+              <div class="image-overlay">
+                <q-icon name="zoom_in" size="34px" />
+                <span>Click para ampliar</span>
+              </div>
+            </div>
 
             <div class="mini-shots">
-              <img src="/proyectos/carlafit-pagos.png" alt="Pagos CarlaFit" />
-              <img src="/proyectos/carlafit-inscripciones.png" alt="Inscripciones CarlaFit" />
+              <div class="screenshot-frame" @click="openGallery('carlafit', 1)">
+                <img src="/proyectos/carlafit-pagos.png" alt="Pagos CarlaFit" />
+                <div class="image-overlay">
+                  <q-icon name="zoom_in" size="28px" />
+                  <span>Ampliar</span>
+                </div>
+              </div>
+
+              <div class="screenshot-frame" @click="openGallery('carlafit', 2)">
+                <img src="/proyectos/carlafit-inscripciones.png" alt="Inscripciones CarlaFit" />
+                <div class="image-overlay">
+                  <q-icon name="zoom_in" size="28px" />
+                  <span>Ampliar</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -528,14 +566,136 @@
       target="_blank"
     />
 
+    <!-- MODAL GALERIA -->
+    <q-dialog v-model="galleryOpen" maximized>
+      <q-card class="gallery-dialog">
+        <div class="gallery-header">
+          <div>
+            <div class="gallery-title">{{ currentGalleryTitle }}</div>
+            <div class="gallery-subtitle">{{ currentImageTitle }}</div>
+          </div>
+
+          <q-btn flat round dense icon="close" class="gallery-close" @click="galleryOpen = false" />
+        </div>
+
+        <div class="gallery-body">
+          <q-btn
+            round
+            dense
+            icon="chevron_left"
+            class="gallery-arrow left"
+            @click="prevImage"
+          />
+
+          <img
+            :src="currentImage.src"
+            :alt="currentImage.title"
+            class="gallery-full-image"
+          />
+
+          <q-btn
+            round
+            dense
+            icon="chevron_right"
+            class="gallery-arrow right"
+            @click="nextImage"
+          />
+        </div>
+
+        <div class="gallery-footer">
+          <div class="gallery-counter">
+            {{ currentImageIndex + 1 }} / {{ currentImages.length }}
+          </div>
+
+          <div class="gallery-thumbs">
+            <button
+              v-for="(image, index) in currentImages"
+              :key="image.src"
+              class="gallery-thumb"
+              :class="{ active: index === currentImageIndex }"
+              @click="currentImageIndex = index"
+            >
+              <img :src="image.src" :alt="image.title" />
+            </button>
+          </div>
+        </div>
+      </q-card>
+    </q-dialog>
+
   </q-page>
 </template>
 
 <script setup>
+import { computed, ref } from 'vue'
+
 const facebookUrl = 'https://www.facebook.com/search/top?q=AGR%20Studio'
 const instagramUrl = 'https://www.instagram.com/agrstudio.dev/'
 const whatsappUrl = 'https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio.'
 const emailUrl = 'mailto:alexby2g@gmail.com?subject=Solicitud%20de%20sistema%20AGR%20Studio&body=Hola%20AGR%20Studio,%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio.'
+
+const galleryOpen = ref(false)
+const currentGalleryKey = ref('aurea')
+const currentImageIndex = ref(0)
+
+const galleries = {
+  aurea: {
+    title: 'AUREA Beauty Salon',
+    images: [
+      {
+        title: 'Dashboard administrativo',
+        src: '/proyectos/aurea-dashboard.png'
+      },
+      {
+        title: 'Gestión de clientes',
+        src: '/proyectos/aurea-clientes.png'
+      },
+      {
+        title: 'Control de citas',
+        src: '/proyectos/aurea-citas.png'
+      }
+    ]
+  },
+  carlafit: {
+    title: 'CarlaFit',
+    images: [
+      {
+        title: 'Dashboard CarlaFit',
+        src: '/proyectos/carlafit-dashboard.png'
+      },
+      {
+        title: 'Pagos CarlaFit',
+        src: '/proyectos/carlafit-pagos.png'
+      },
+      {
+        title: 'Inscripciones CarlaFit',
+        src: '/proyectos/carlafit-inscripciones.png'
+      }
+    ]
+  }
+}
+
+const currentGallery = computed(() => galleries[currentGalleryKey.value])
+const currentImages = computed(() => currentGallery.value.images)
+const currentGalleryTitle = computed(() => currentGallery.value.title)
+const currentImage = computed(() => currentImages.value[currentImageIndex.value])
+const currentImageTitle = computed(() => currentImage.value.title)
+
+function openGallery(galleryKey, imageIndex = 0) {
+  currentGalleryKey.value = galleryKey
+  currentImageIndex.value = imageIndex
+  galleryOpen.value = true
+}
+
+function nextImage() {
+  currentImageIndex.value = (currentImageIndex.value + 1) % currentImages.value.length
+}
+
+function prevImage() {
+  currentImageIndex.value =
+    currentImageIndex.value === 0
+      ? currentImages.value.length - 1
+      : currentImageIndex.value - 1
+}
 
 function scrollToSection(id) {
   const section = document.getElementById(id)
@@ -1035,13 +1195,47 @@ function scrollToSection(id) {
   gap: 16px;
 }
 
-.case-gallery img {
+.screenshot-frame {
+  position: relative;
   width: 100%;
-  display: block;
+  height: 150px;
   border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
   border: 1px solid rgba(255,255,255,0.13);
-  object-fit: cover;
   box-shadow: 0 18px 45px rgba(0,0,0,.35);
+}
+
+.screenshot-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: 0.35s ease;
+}
+
+.screenshot-frame:hover img {
+  transform: scale(1.06);
+  filter: brightness(0.75);
+}
+
+.screenshot-frame:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.48);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  opacity: 0;
+  transition: 0.3s;
+  color: white;
+  font-weight: 900;
+  text-align: center;
 }
 
 .main-shot {
@@ -1052,10 +1246,6 @@ function scrollToSection(id) {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
-}
-
-.mini-shots img {
-  height: 150px;
 }
 
 .feature-list {
@@ -1330,6 +1520,128 @@ function scrollToSection(id) {
   box-shadow: 0 0 24px rgba(0, 230, 118, .45);
 }
 
+.gallery-dialog {
+  background:
+    radial-gradient(circle at top left, rgba(0,170,255,0.16), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(138,43,226,0.18), transparent 35%),
+    rgba(5,5,10,0.98);
+  color: white;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.gallery-header {
+  height: 76px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0,0,0,0.35);
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
+
+.gallery-title {
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.gallery-subtitle {
+  color: #bdbdd0;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.gallery-close {
+  color: white;
+  background: rgba(255,255,255,0.08);
+}
+
+.gallery-body {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 80px;
+  overflow: hidden;
+}
+
+.gallery-full-image {
+  max-width: 100%;
+  max-height: calc(100vh - 190px);
+  object-fit: contain;
+  border-radius: 22px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+}
+
+.gallery-arrow {
+  position: absolute;
+  z-index: 5;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  width: 46px;
+  height: 46px;
+}
+
+.gallery-arrow.left {
+  left: 24px;
+}
+
+.gallery-arrow.right {
+  right: 24px;
+}
+
+.gallery-footer {
+  padding: 16px 24px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.gallery-counter {
+  font-weight: 900;
+  color: #70cfff;
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  max-width: 80vw;
+  padding-bottom: 4px;
+}
+
+.gallery-thumb {
+  width: 92px;
+  height: 58px;
+  padding: 0;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: .3s;
+}
+
+.gallery-thumb.active {
+  opacity: 1;
+  border-color: #00aaff;
+  box-shadow: 0 0 18px rgba(0,170,255,0.35);
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media (max-width: 1200px) {
   .nav-links {
     gap: 16px;
@@ -1421,6 +1733,18 @@ function scrollToSection(id) {
   .project-actions {
     justify-content: center;
   }
+
+  .gallery-body {
+    padding: 20px 58px;
+  }
+
+  .gallery-arrow.left {
+    left: 12px;
+  }
+
+  .gallery-arrow.right {
+    right: 12px;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1444,6 +1768,44 @@ function scrollToSection(id) {
   .project-meta {
     text-align: left;
   }
+
+  .gallery-header {
+    height: auto;
+    min-height: 72px;
+    padding: 14px 16px;
+  }
+
+  .gallery-title {
+    font-size: 1rem;
+  }
+
+  .gallery-subtitle {
+    font-size: .85rem;
+  }
+
+  .gallery-body {
+    padding: 18px 12px;
+  }
+
+  .gallery-arrow {
+    top: auto;
+    bottom: 96px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .gallery-arrow.left {
+    left: 18px;
+  }
+
+  .gallery-arrow.right {
+    right: 18px;
+  }
+
+  .gallery-full-image {
+    max-height: calc(100vh - 230px);
+    border-radius: 16px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -1459,7 +1821,7 @@ function scrollToSection(id) {
     grid-template-columns: 1fr;
   }
 
-  .mini-shots img {
+  .screenshot-frame {
     height: 180px;
   }
 
