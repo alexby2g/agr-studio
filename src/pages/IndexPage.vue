@@ -11,7 +11,7 @@
       <nav class="nav-links">
         <a @click.prevent="scrollToSection('inicio')">Inicio</a>
         <a @click.prevent="scrollToSection('servicios')">Servicios</a>
-        <a @click.prevent="scrollToSection('casos')">Casos</a>
+        <a @click.prevent="scrollToSection('productos')">Productos</a>
         <a @click.prevent="scrollToSection('sobre')">Sobre AGR</a>
         <a @click.prevent="scrollToSection('tecnologias')">Tecnologías</a>
         <a @click.prevent="scrollToSection('contacto')">Contacto</a>
@@ -31,12 +31,12 @@
         <h1>AGR</h1>
 
         <p class="subtitle">
-          Transformamos ideas en sistemas.
+          Software para negocios reales.
         </p>
 
         <p class="description">
-          Desarrollo de sistemas web, aplicaciones móviles y soluciones digitales
-          para empresas, emprendedores y organizaciones.
+          AGR Studio desarrolla sistemas web, aplicaciones móviles y soluciones digitales
+          listas para producción, pensadas para optimizar procesos y hacer crecer negocios.
         </p>
 
         <div class="hero-location">
@@ -45,15 +45,15 @@
 
         <div class="actions">
           <q-btn
-            label="Ver casos"
+            label="Ver productos"
             icon="work"
             class="btn-primary"
             unelevated
-            @click="scrollToSection('casos')"
+            @click="scrollToSection('productos')"
           />
 
           <q-btn
-            label="Contactar"
+            label="Solicitar sistema"
             icon="chat"
             class="btn-secondary"
             unelevated
@@ -66,23 +66,23 @@
     <!-- STATS -->
     <section class="stats-section">
       <div class="stat-card">
-        <strong>+2</strong>
-        <span>Proyectos reales</span>
+        <strong>2+</strong>
+        <span>Productos desarrollados</span>
       </div>
 
       <div class="stat-card">
-        <strong>Web + App</strong>
-        <span>Soluciones completas</span>
+        <strong>Web + Android</strong>
+        <span>Soluciones multiplataforma</span>
       </div>
 
       <div class="stat-card">
-        <strong>24/7</strong>
-        <span>Presencia digital</span>
+        <strong>Producción</strong>
+        <span>Sistemas operativos</span>
       </div>
 
       <div class="stat-card">
         <strong>100%</strong>
-        <span>Personalizado</span>
+        <span>Desarrollo personalizado</span>
       </div>
     </section>
 
@@ -90,7 +90,7 @@
     <section id="servicios" class="section">
       <div class="section-title">
         <span>Servicios</span>
-        <h2>Soluciones digitales para negocios reales</h2>
+        <h2>Soluciones digitales para empresas y emprendimientos</h2>
       </div>
 
       <div class="row q-col-gutter-lg">
@@ -100,8 +100,8 @@
               <q-icon name="language" size="46px" class="icon-blue" />
               <h3>Sistemas Web</h3>
               <p>
-                Aplicaciones modernas para administrar clientes, ventas, pagos,
-                citas, reportes y procesos internos.
+                Desarrollo de plataformas administrativas para gestionar clientes,
+                ventas, pagos, reservas, reportes y procesos internos.
               </p>
             </q-card-section>
           </q-card>
@@ -111,10 +111,10 @@
           <q-card class="glass-card">
             <q-card-section>
               <q-icon name="phone_android" size="46px" class="icon-purple" />
-              <h3>Apps Móviles</h3>
+              <h3>Aplicaciones Android</h3>
               <p>
-                Aplicaciones Android conectadas a sistemas web, listas para
-                negocios, clientes y usuarios reales.
+                Apps móviles conectadas a sistemas web, pensadas para negocios
+                que necesitan operar desde celular y computadora.
               </p>
             </q-card-section>
           </q-card>
@@ -126,8 +126,8 @@
               <q-icon name="auto_awesome" size="46px" class="icon-cyan" />
               <h3>Automatización</h3>
               <p>
-                Notificaciones, paneles administrativos, reportes y herramientas
-                para ahorrar tiempo y mejorar el control.
+                Digitalización de procesos, notificaciones, paneles administrativos,
+                control de datos y herramientas para mejorar la productividad.
               </p>
             </q-card-section>
           </q-card>
@@ -135,11 +135,11 @@
       </div>
     </section>
 
-    <!-- CASOS DE EXITO -->
-    <section id="casos" class="section cases-section">
+    <!-- PRODUCTOS -->
+    <section id="productos" class="section cases-section">
       <div class="section-title">
-        <span>Casos de éxito</span>
-        <h2>Proyectos reales desarrollados</h2>
+        <span>Productos AGR Studio</span>
+        <h2>Soluciones desarrolladas para negocios reales</h2>
       </div>
 
       <!-- AUREA -->
@@ -160,15 +160,16 @@
             <h3>💄 AUREA Beauty Salon</h3>
 
             <p>
-              Plataforma profesional para salones de belleza con gestión de clientes,
-              citas, servicios, pagos, calendario, reportes, historial y aplicación móvil.
+              Producto digital desarrollado para salones de belleza y centros estéticos.
+              Permite administrar clientes, citas, servicios, pagos, calendario,
+              historial, reportes y operación diaria desde una plataforma moderna.
             </p>
 
             <div class="project-meta">
               <span>🌐 Frontend: Vercel</span>
               <span>⚙️ Backend: Render</span>
               <span>🗄️ Base de datos: Neon PostgreSQL</span>
-              <span>📱 App: Android con Capacitor</span>
+              <span>📱 App Android: Capacitor</span>
             </div>
 
             <div class="feature-list">
@@ -177,7 +178,7 @@
               <span>✔ Control de citas</span>
               <span>✔ Registro de pagos</span>
               <span>✔ Calendario inteligente</span>
-              <span>✔ Servicios más vendidos</span>
+              <span>✔ Reportes y servicios</span>
             </div>
 
             <div class="chips">
@@ -192,7 +193,7 @@
 
             <div class="project-actions">
               <q-btn
-                label="Ver Proyecto"
+                label="Ver Producto"
                 icon="visibility"
                 class="btn-primary"
                 unelevated
@@ -241,15 +242,16 @@
 
               <div>
                 <div class="project-badge green">Sistema administrativo</div>
-                <div class="status-badge testing">● Operativo / En mejora</div>
+                <div class="status-badge online">● Operativo</div>
               </div>
             </div>
 
             <h3>🏋️ CarlaFit</h3>
 
             <p>
-              Sistema para gimnasio y centro fitness con control de zumberas,
-              pagos, inscripciones, asistencias, grupos, servicios y centro de mensajes.
+              Producto digital desarrollado para gimnasios y centros fitness.
+              Centraliza inscripciones, pagos, asistencias, grupos, servicios,
+              mensajes y control administrativo desde una plataforma clara y funcional.
             </p>
 
             <div class="project-meta">
@@ -278,7 +280,7 @@
 
             <div class="project-actions">
               <q-btn
-                label="Ver Proyecto"
+                label="Ver Producto"
                 icon="visibility"
                 class="btn-secondary"
                 unelevated
@@ -303,7 +305,7 @@
     <section id="sobre" class="section about-section">
       <div class="section-title">
         <span>Sobre AGR Studio</span>
-        <h2>Desarrollo de sistemas para negocios que quieren crecer</h2>
+        <h2>Software studio enfocado en soluciones reales</h2>
       </div>
 
       <div class="about-grid">
@@ -315,14 +317,14 @@
           <h3>AGR Studio</h3>
 
           <p>
-            AGR Studio es una marca enfocada en crear sistemas web, aplicaciones móviles
-            y soluciones digitales personalizadas para empresas, emprendimientos y
-            organizaciones que buscan modernizar sus procesos.
+            AGR Studio desarrolla software para empresas, emprendimientos y
+            organizaciones que necesitan optimizar sus procesos mediante tecnología
+            moderna, funcional y escalable.
           </p>
 
           <p>
-            Nuestro objetivo es transformar ideas en herramientas reales, funcionales
-            y listas para utilizarse en negocios del mundo real.
+            Nuestro enfoque combina análisis, diseño, desarrollo, despliegue y soporte
+            para entregar sistemas listos para operar en negocios reales.
           </p>
 
           <div class="about-contact">
@@ -336,26 +338,26 @@
           <q-icon name="developer_mode" size="46px" class="icon-blue" />
           <h3>Desarrollo a medida</h3>
           <p>
-            Cada sistema se adapta a las necesidades del negocio, evitando soluciones
-            genéricas que no encajan con la realidad del cliente.
+            Creamos sistemas adaptados a la operación real de cada negocio, evitando
+            soluciones genéricas y difíciles de usar.
           </p>
         </div>
 
         <div class="about-card">
           <q-icon name="cloud_done" size="46px" class="icon-purple" />
-          <h3>Publicación en internet</h3>
+          <h3>Despliegue profesional</h3>
           <p>
-            Implementamos sistemas listos para funcionar en la web, con acceso desde
-            computadora, tablet o celular.
+            Publicamos sistemas en plataformas modernas para que puedan utilizarse
+            desde internet, celular o computadora.
           </p>
         </div>
 
         <div class="about-card">
           <q-icon name="support_agent" size="46px" class="icon-cyan" />
-          <h3>Acompañamiento</h3>
+          <h3>Soporte continuo</h3>
           <p>
-            Acompañamos el proceso desde la idea inicial hasta la implementación,
-            ajustes y mejoras del sistema.
+            Acompañamos el crecimiento del sistema con ajustes, mejoras, mantenimiento
+            y nuevas funcionalidades.
           </p>
         </div>
       </div>
@@ -364,7 +366,7 @@
     <!-- POR QUE AGR -->
     <section class="section why-section">
       <div class="section-title">
-        <span>AGR</span>
+        <span>AGR Studio</span>
         <h2>¿Por qué elegirnos?</h2>
       </div>
 
@@ -372,16 +374,16 @@
         <div class="col-12 col-md-3">
           <div class="why-card">
             <q-icon name="bolt" size="38px" />
-            <h4>Rápido</h4>
-            <p>Desarrollo ágil y enfocado en resultados.</p>
+            <h4>Ágil</h4>
+            <p>Desarrollo enfocado en soluciones útiles, claras y funcionales.</p>
           </div>
         </div>
 
         <div class="col-12 col-md-3">
           <div class="why-card">
             <q-icon name="devices" size="38px" />
-            <h4>Responsive</h4>
-            <p>Diseños adaptados a PC, tablet y celular.</p>
+            <h4>Multiplataforma</h4>
+            <p>Sistemas adaptados para web, escritorio, tablet y móvil.</p>
           </div>
         </div>
 
@@ -389,15 +391,15 @@
           <div class="why-card">
             <q-icon name="security" size="38px" />
             <h4>Seguro</h4>
-            <p>Sistemas con autenticación, roles y respaldo.</p>
+            <p>Autenticación, bases de datos y estructura pensada para producción.</p>
           </div>
         </div>
 
         <div class="col-12 col-md-3">
           <div class="why-card">
             <q-icon name="rocket_launch" size="38px" />
-            <h4>Publicado</h4>
-            <p>Tu sistema listo en internet para tus clientes.</p>
+            <h4>Listo para operar</h4>
+            <p>Entrega, publicación y acompañamiento para uso real del sistema.</p>
           </div>
         </div>
       </div>
@@ -406,8 +408,8 @@
     <!-- TECNOLOGIAS -->
     <section id="tecnologias" class="section tech-section">
       <div class="section-title">
-        <span>Stack</span>
-        <h2>Tecnologías utilizadas</h2>
+        <span>Stack tecnológico</span>
+        <h2>Tecnologías utilizadas en nuestros productos</h2>
       </div>
 
       <div class="tech-grid">
@@ -427,10 +429,11 @@
     <!-- CONTACTO -->
     <section id="contacto" class="section contact-section">
       <div class="contact-box">
-        <h2>¿Tienes una idea?</h2>
+        <h2>¿Necesitas un sistema para tu negocio?</h2>
 
         <p>
-          En AGR Studio la convertimos en un sistema moderno, funcional y listo para crecer.
+          En AGR Studio diseñamos y desarrollamos soluciones digitales reales,
+          listas para operar y crecer junto a tu negocio.
         </p>
 
         <div class="contact-info">
@@ -440,11 +443,11 @@
         </div>
 
         <q-btn
-          label="Contactar por WhatsApp"
+          label="Solicitar sistema por WhatsApp"
           icon="chat"
           class="whatsapp-btn"
           unelevated
-          href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+          href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio."
           target="_blank"
         />
       </div>
@@ -454,7 +457,7 @@
     <footer class="footer">
       <div>
         <strong>AGR Studio</strong>
-        <span>Transformamos ideas en sistemas.</span>
+        <span>Software para negocios reales.</span>
       </div>
 
       <div class="footer-contact">
@@ -463,7 +466,7 @@
         <span>📱 +591 63285735</span>
       </div>
 
-      <p>© 2026 AGR Studio. Desarrollo web, apps móviles y soluciones digitales.</p>
+      <p>© 2026 AGR Studio. Software, apps móviles y soluciones digitales.</p>
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
@@ -471,7 +474,7 @@
       round
       icon="chat"
       class="floating-whatsapp"
-      href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20estoy%20interesado%20en%20un%20sistema%20web%20para%20mi%20negocio.%20Me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+      href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio."
       target="_blank"
     />
 
@@ -503,7 +506,6 @@ function scrollToSection(id) {
   scroll-behavior: smooth;
 }
 
-/* NAVBAR */
 .navbar {
   position: sticky;
   top: 0;
@@ -555,7 +557,6 @@ function scrollToSection(id) {
   color: #00aaff;
 }
 
-/* HERO */
 .hero {
   position: relative;
   min-height: calc(100vh - 76px);
@@ -713,7 +714,6 @@ function scrollToSection(id) {
   bottom: 70px;
 }
 
-/* STATS */
 .stats-section {
   width: 84%;
   margin: -35px auto 35px;
@@ -744,7 +744,6 @@ function scrollToSection(id) {
   color: #d9d9e8;
 }
 
-/* SECTIONS */
 .section {
   padding: 90px 8%;
 }
@@ -882,11 +881,6 @@ function scrollToSection(id) {
   color: #3cffaa;
 }
 
-.status-badge.testing {
-  background: rgba(255,193,7,0.16);
-  color: #ffd166;
-}
-
 .project-meta {
   display: grid;
   gap: 8px;
@@ -902,7 +896,6 @@ function scrollToSection(id) {
   font-size: .93rem;
 }
 
-/* CASES */
 .cases-section {
   background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));
 }
@@ -994,7 +987,6 @@ function scrollToSection(id) {
   color: white;
 }
 
-/* ABOUT */
 .about-section {
   background:
     radial-gradient(circle at 20% 20%, rgba(0,170,255,0.10), transparent 30%),
@@ -1050,7 +1042,6 @@ function scrollToSection(id) {
   font-weight: 700;
 }
 
-/* WHY */
 .why-section {
   background: rgba(255,255,255,0.025);
 }
@@ -1083,7 +1074,6 @@ function scrollToSection(id) {
   color: #cfcfe0;
 }
 
-/* TECH */
 .tech-section {
   background: rgba(255,255,255,0.03);
 }
@@ -1111,7 +1101,6 @@ function scrollToSection(id) {
   border-color: rgba(0,170,255,0.35);
 }
 
-/* CONTACT */
 .contact-box {
   max-width: 900px;
   margin: auto;
@@ -1162,7 +1151,6 @@ function scrollToSection(id) {
   padding: 13px 24px;
 }
 
-/* FOOTER */
 .footer {
   padding: 34px 8%;
   border-top: 1px solid rgba(255,255,255,0.08);
@@ -1199,7 +1187,6 @@ function scrollToSection(id) {
   font-size: .9rem;
 }
 
-/* WHATSAPP FLOTANTE */
 .floating-whatsapp {
   position: fixed;
   right: 24px;
@@ -1212,7 +1199,6 @@ function scrollToSection(id) {
   box-shadow: 0 0 24px rgba(0, 230, 118, .45);
 }
 
-/* RESPONSIVE */
 @media (max-width: 1100px) {
   .nav-links {
     gap: 16px;
