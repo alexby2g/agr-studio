@@ -16,6 +16,12 @@
         <a @click.prevent="scrollToSection('tecnologias')">Tecnologías</a>
         <a @click.prevent="scrollToSection('contacto')">Contacto</a>
       </nav>
+
+      <div class="nav-social">
+        <q-btn round dense flat icon="public" :href="facebookUrl" target="_blank" aria-label="Facebook AGR Studio" />
+        <q-btn round dense flat icon="photo_camera" :href="instagramUrl" target="_blank" aria-label="Instagram AGR Studio" />
+        <q-btn round dense flat icon="chat" :href="whatsappUrl" target="_blank" aria-label="WhatsApp AGR Studio" />
+      </div>
     </header>
 
     <!-- HERO -->
@@ -59,6 +65,13 @@
             unelevated
             @click="scrollToSection('contacto')"
           />
+        </div>
+
+        <div class="hero-social">
+          <a :href="facebookUrl" target="_blank">Facebook</a>
+          <a :href="instagramUrl" target="_blank">Instagram</a>
+          <a :href="whatsappUrl" target="_blank">WhatsApp</a>
+          <a :href="emailUrl">Email</a>
         </div>
       </div>
     </section>
@@ -292,7 +305,7 @@
                 icon="chat"
                 class="btn-outline"
                 unelevated
-                href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20un%20sistema%20parecido%20a%20CarlaFit."
+                :href="whatsappUrl"
                 target="_blank"
               />
             </div>
@@ -331,6 +344,11 @@
             <span>📍 Trinidad - Beni, Bolivia</span>
             <span>📧 alexby2g@gmail.com</span>
             <span>📱 +591 63285735</span>
+          </div>
+
+          <div class="about-social">
+            <q-btn label="Facebook" icon="public" class="btn-outline" :href="facebookUrl" target="_blank" />
+            <q-btn label="Instagram" icon="photo_camera" class="btn-outline" :href="instagramUrl" target="_blank" />
           </div>
         </div>
 
@@ -442,14 +460,42 @@
           <span>📱 +591 63285735</span>
         </div>
 
-        <q-btn
-          label="Solicitar sistema por WhatsApp"
-          icon="chat"
-          class="whatsapp-btn"
-          unelevated
-          href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio."
-          target="_blank"
-        />
+        <div class="contact-buttons">
+          <q-btn
+            label="WhatsApp"
+            icon="chat"
+            class="whatsapp-btn"
+            unelevated
+            :href="whatsappUrl"
+            target="_blank"
+          />
+
+          <q-btn
+            label="Instagram"
+            icon="photo_camera"
+            class="instagram-btn"
+            unelevated
+            :href="instagramUrl"
+            target="_blank"
+          />
+
+          <q-btn
+            label="Facebook"
+            icon="public"
+            class="facebook-btn"
+            unelevated
+            :href="facebookUrl"
+            target="_blank"
+          />
+
+          <q-btn
+            label="Email"
+            icon="mail"
+            class="email-btn"
+            unelevated
+            :href="emailUrl"
+          />
+        </div>
       </div>
     </section>
 
@@ -466,7 +512,11 @@
         <span>📱 +591 63285735</span>
       </div>
 
-      <p>© 2026 AGR Studio. Software, apps móviles y soluciones digitales.</p>
+      <div class="footer-social">
+        <a :href="facebookUrl" target="_blank">Facebook</a>
+        <a :href="instagramUrl" target="_blank">Instagram</a>
+        <a :href="whatsappUrl" target="_blank">WhatsApp</a>
+      </div>
     </footer>
 
     <!-- WHATSAPP FLOTANTE -->
@@ -474,7 +524,7 @@
       round
       icon="chat"
       class="floating-whatsapp"
-      href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio."
+      :href="whatsappUrl"
       target="_blank"
     />
 
@@ -482,6 +532,11 @@
 </template>
 
 <script setup>
+const facebookUrl = 'https://www.facebook.com/search/top?q=AGR%20Studio'
+const instagramUrl = 'https://www.instagram.com/agrstudio.dev/'
+const whatsappUrl = 'https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio.'
+const emailUrl = 'mailto:alexby2g@gmail.com?subject=Solicitud%20de%20sistema%20AGR%20Studio&body=Hola%20AGR%20Studio,%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio.'
+
 function scrollToSection(id) {
   const section = document.getElementById(id)
 
@@ -555,6 +610,17 @@ function scrollToSection(id) {
 
 .nav-links a:hover {
   color: #00aaff;
+}
+
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-social .q-btn {
+  color: #ffffff;
+  background: rgba(255,255,255,0.06);
 }
 
 .hero {
@@ -661,6 +727,33 @@ function scrollToSection(id) {
 .hero .actions {
   justify-content: center;
   margin-top: 34px;
+}
+
+.hero-social {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-social a,
+.footer-social a {
+  color: #dfeaff;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: .3s;
+}
+
+.hero-social a:hover,
+.footer-social a:hover {
+  color: #ffffff;
+  background: rgba(0,170,255,0.18);
+  transform: translateY(-2px);
 }
 
 .btn-primary,
@@ -1042,6 +1135,13 @@ function scrollToSection(id) {
   font-weight: 700;
 }
 
+.about-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
 .why-section {
   background: rgba(255,255,255,0.025);
 }
@@ -1102,7 +1202,7 @@ function scrollToSection(id) {
 }
 
 .contact-box {
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
   padding: 65px 28px;
   text-align: center;
@@ -1142,13 +1242,39 @@ function scrollToSection(id) {
   font-weight: 700;
 }
 
-.whatsapp-btn {
-  margin-top: 28px;
-  background: linear-gradient(90deg, #00c853, #00e676);
-  color: #061006;
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.whatsapp-btn,
+.instagram-btn,
+.facebook-btn,
+.email-btn {
+  color: white;
   font-weight: 900;
   border-radius: 16px;
   padding: 13px 24px;
+}
+
+.whatsapp-btn {
+  background: linear-gradient(90deg, #00c853, #00e676);
+  color: #061006;
+}
+
+.instagram-btn {
+  background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+}
+
+.facebook-btn {
+  background: linear-gradient(90deg, #1877f2, #0a58ca);
+}
+
+.email-btn {
+  background: linear-gradient(90deg, #008cff, #8a2be2);
 }
 
 .footer {
@@ -1177,14 +1303,19 @@ function scrollToSection(id) {
   margin: 0;
 }
 
-.footer p {
-  text-align: right;
-}
-
 .footer-contact {
   text-align: center;
   gap: 5px;
   font-size: .9rem;
+}
+
+.footer-social {
+  align-items: flex-end;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .floating-whatsapp {
@@ -1199,13 +1330,19 @@ function scrollToSection(id) {
   box-shadow: 0 0 24px rgba(0, 230, 118, .45);
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .nav-links {
     gap: 16px;
   }
 
   .nav-links a {
     font-size: .92rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav-social {
+    display: none;
   }
 
   .about-grid {
@@ -1273,12 +1410,12 @@ function scrollToSection(id) {
     text-align: center;
   }
 
-  .footer p {
-    text-align: center;
-  }
-
   .footer div {
     align-items: center;
+  }
+
+  .footer-social {
+    justify-content: center;
   }
 
   .project-actions {
@@ -1333,6 +1470,10 @@ function scrollToSection(id) {
 
   .carlafit-logo-wrap {
     width: 130px;
+  }
+
+  .contact-buttons .q-btn {
+    width: 100%;
   }
 }
 </style>
