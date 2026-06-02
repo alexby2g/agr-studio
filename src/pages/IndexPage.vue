@@ -11,6 +11,7 @@
       <nav class="nav-links">
         <a @click.prevent="scrollToSection('inicio')">Inicio</a>
         <a @click.prevent="scrollToSection('servicios')">Servicios</a>
+        <a @click.prevent="scrollToSection('proceso')">Proceso</a>
         <a @click.prevent="scrollToSection('productos')">Productos</a>
         <a @click.prevent="scrollToSection('sobre')">Sobre AGR</a>
         <a @click.prevent="scrollToSection('tecnologias')">Tecnologías</a>
@@ -76,26 +77,11 @@
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats-section">
-      <div class="stat-card">
-        <strong>2+</strong>
-        <span>Productos desarrollados</span>
-      </div>
-
-      <div class="stat-card">
-        <strong>Web + Android</strong>
-        <span>Soluciones multiplataforma</span>
-      </div>
-
-      <div class="stat-card">
-        <strong>Producción</strong>
-        <span>Sistemas operativos</span>
-      </div>
-
-      <div class="stat-card">
-        <strong>100%</strong>
-        <span>Desarrollo personalizado</span>
+    <!-- STATS ANIMADOS -->
+    <section ref="statsSectionRef" class="stats-section">
+      <div class="stat-card" v-for="stat in stats" :key="stat.label">
+        <strong>{{ stat.prefix }}{{ stat.display }}{{ stat.suffix }}</strong>
+        <span>{{ stat.label }}</span>
       </div>
     </section>
 
@@ -144,6 +130,66 @@
               </p>
             </q-card-section>
           </q-card>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO DE TRABAJO -->
+    <section id="proceso" class="section process-section">
+      <div class="section-title">
+        <span>Proceso de trabajo</span>
+        <h2>Cómo convertimos una idea en un sistema real</h2>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-number">01</div>
+          <q-icon name="search" size="42px" class="icon-blue" />
+          <h3>Análisis</h3>
+          <p>
+            Escuchamos la necesidad del negocio, identificamos procesos y definimos
+            qué debe resolver el sistema.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">02</div>
+          <q-icon name="draw" size="42px" class="icon-purple" />
+          <h3>Diseño</h3>
+          <p>
+            Organizamos pantallas, módulos, flujo de trabajo y experiencia de usuario
+            antes de construir.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">03</div>
+          <q-icon name="code" size="42px" class="icon-cyan" />
+          <h3>Desarrollo</h3>
+          <p>
+            Programamos frontend, backend, base de datos, seguridad y funcionalidades
+            principales.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">04</div>
+          <q-icon name="rocket_launch" size="42px" class="icon-blue" />
+          <h3>Implementación</h3>
+          <p>
+            Publicamos el sistema en la nube, configuramos el acceso y dejamos la
+            solución lista para operar.
+          </p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-number">05</div>
+          <q-icon name="support_agent" size="42px" class="icon-purple" />
+          <h3>Soporte</h3>
+          <p>
+            Acompañamos el crecimiento del sistema con mejoras, ajustes y nuevas
+            funcionalidades.
+          </p>
         </div>
       </div>
     </section>
@@ -579,27 +625,11 @@
         </div>
 
         <div class="gallery-body">
-          <q-btn
-            round
-            dense
-            icon="chevron_left"
-            class="gallery-arrow left"
-            @click="prevImage"
-          />
+          <q-btn round dense icon="chevron_left" class="gallery-arrow left" @click="prevImage" />
 
-          <img
-            :src="currentImage.src"
-            :alt="currentImage.title"
-            class="gallery-full-image"
-          />
+          <img :src="currentImage.src" :alt="currentImage.title" class="gallery-full-image" />
 
-          <q-btn
-            round
-            dense
-            icon="chevron_right"
-            class="gallery-arrow right"
-            @click="nextImage"
-          />
+          <q-btn round dense icon="chevron_right" class="gallery-arrow right" @click="nextImage" />
         </div>
 
         <div class="gallery-footer">
@@ -626,12 +656,46 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const facebookUrl = 'https://www.facebook.com/search/top?q=AGR%20Studio'
 const instagramUrl = 'https://www.instagram.com/agrstudio.dev/'
 const whatsappUrl = 'https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20cotizar%20un%20sistema%20para%20mi%20negocio.'
 const emailUrl = 'mailto:alexby2g@gmail.com?subject=Solicitud%20de%20sistema%20AGR%20Studio&body=Hola%20AGR%20Studio,%20quiero%20informaci%C3%B3n%20sobre%20un%20sistema%20para%20mi%20negocio.'
+
+const statsSectionRef = ref(null)
+const statsStarted = ref(false)
+
+const stats = ref([
+  {
+    target: 2,
+    display: 0,
+    prefix: '',
+    suffix: '+',
+    label: 'Productos desarrollados'
+  },
+  {
+    target: 2,
+    display: 0,
+    prefix: '',
+    suffix: '',
+    label: 'Soluciones web y Android'
+  },
+  {
+    target: 100,
+    display: 0,
+    prefix: '',
+    suffix: '%',
+    label: 'Desarrollo personalizado'
+  },
+  {
+    target: 24,
+    display: 0,
+    prefix: '',
+    suffix: '/7',
+    label: 'Presencia digital'
+  }
+])
 
 const galleryOpen = ref(false)
 const currentGalleryKey = ref('aurea')
@@ -641,35 +705,17 @@ const galleries = {
   aurea: {
     title: 'AUREA Beauty Salon',
     images: [
-      {
-        title: 'Dashboard administrativo',
-        src: '/proyectos/aurea-dashboard.png'
-      },
-      {
-        title: 'Gestión de clientes',
-        src: '/proyectos/aurea-clientes.png'
-      },
-      {
-        title: 'Control de citas',
-        src: '/proyectos/aurea-citas.png'
-      }
+      { title: 'Dashboard administrativo', src: '/proyectos/aurea-dashboard.png' },
+      { title: 'Gestión de clientes', src: '/proyectos/aurea-clientes.png' },
+      { title: 'Control de citas', src: '/proyectos/aurea-citas.png' }
     ]
   },
   carlafit: {
     title: 'CarlaFit',
     images: [
-      {
-        title: 'Dashboard CarlaFit',
-        src: '/proyectos/carlafit-dashboard.png'
-      },
-      {
-        title: 'Pagos CarlaFit',
-        src: '/proyectos/carlafit-pagos.png'
-      },
-      {
-        title: 'Inscripciones CarlaFit',
-        src: '/proyectos/carlafit-inscripciones.png'
-      }
+      { title: 'Dashboard CarlaFit', src: '/proyectos/carlafit-dashboard.png' },
+      { title: 'Pagos CarlaFit', src: '/proyectos/carlafit-pagos.png' },
+      { title: 'Inscripciones CarlaFit', src: '/proyectos/carlafit-inscripciones.png' }
     ]
   }
 }
@@ -679,6 +725,33 @@ const currentImages = computed(() => currentGallery.value.images)
 const currentGalleryTitle = computed(() => currentGallery.value.title)
 const currentImage = computed(() => currentImages.value[currentImageIndex.value])
 const currentImageTitle = computed(() => currentImage.value.title)
+
+function animateStats() {
+  if (statsStarted.value) return
+
+  statsStarted.value = true
+
+  stats.value.forEach((stat) => {
+    const duration = 1200
+    const startTime = performance.now()
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+      const eased = 1 - Math.pow(1 - progress, 3)
+
+      stat.display = Math.floor(stat.target * eased)
+
+      if (progress < 1) {
+        requestAnimationFrame(update)
+      } else {
+        stat.display = stat.target
+      }
+    }
+
+    requestAnimationFrame(update)
+  })
+}
 
 function openGallery(galleryKey, imageIndex = 0) {
   currentGalleryKey.value = galleryKey
@@ -707,6 +780,24 @@ function scrollToSection(id) {
     })
   }
 }
+
+onMounted(() => {
+  if (!statsSectionRef.value) return
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        animateStats()
+        observer.disconnect()
+      }
+    },
+    {
+      threshold: 0.3
+    }
+  )
+
+  observer.observe(statsSectionRef.value)
+})
 </script>
 
 <style scoped>
@@ -757,7 +848,7 @@ function scrollToSection(id) {
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 18px;
 }
 
 .nav-links a {
@@ -1022,7 +1113,8 @@ function scrollToSection(id) {
 .glass-card,
 .project-card,
 .case-card,
-.about-card {
+.about-card,
+.process-card {
   border-radius: 28px;
   background: rgba(255,255,255,0.055);
   border: 1px solid rgba(255,255,255,0.1);
@@ -1039,7 +1131,8 @@ function scrollToSection(id) {
 .glass-card:hover,
 .project-card:hover,
 .case-card:hover,
-.about-card:hover {
+.about-card:hover,
+.process-card:hover {
   transform: translateY(-8px);
   border-color: rgba(0,170,255,0.45);
   box-shadow: 0 22px 60px rgba(0,170,255,.12);
@@ -1060,7 +1153,8 @@ function scrollToSection(id) {
 .glass-card h3,
 .project-card h3,
 .case-info h3,
-.about-card h3 {
+.about-card h3,
+.process-card h3 {
   font-size: 1.8rem;
   margin: 18px 0 12px;
   font-weight: 800;
@@ -1069,9 +1163,50 @@ function scrollToSection(id) {
 .glass-card p,
 .project-card p,
 .case-info p,
-.about-card p {
+.about-card p,
+.process-card p {
   color: #c9c9d8;
   line-height: 1.7;
+}
+
+.process-section {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(0,170,255,0.10), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(138,43,226,0.12), transparent 34%),
+    rgba(255,255,255,0.02);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.process-card {
+  position: relative;
+  padding: 30px 22px;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.process-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 3px;
+  background: linear-gradient(90deg, #00aaff, #8a2be2);
+  border-radius: 999px;
+}
+
+.process-number {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.08);
 }
 
 .project-top {
@@ -1642,13 +1777,19 @@ function scrollToSection(id) {
   object-fit: cover;
 }
 
+@media (max-width: 1300px) {
+  .process-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1200px) {
   .nav-links {
-    gap: 16px;
+    gap: 12px;
   }
 
   .nav-links a {
-    font-size: .92rem;
+    font-size: .88rem;
   }
 }
 
@@ -1683,6 +1824,10 @@ function scrollToSection(id) {
 
   .main-shot {
     height: 260px;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1748,7 +1893,8 @@ function scrollToSection(id) {
 }
 
 @media (max-width: 620px) {
-  .about-grid {
+  .about-grid,
+  .process-grid {
     grid-template-columns: 1fr;
   }
 
