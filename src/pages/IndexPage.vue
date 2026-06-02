@@ -146,7 +146,16 @@
       <q-card class="case-card case-aurea">
         <div class="case-grid">
           <div class="case-info">
-            <div class="project-badge">Sistema web + App Android</div>
+            <div class="project-top">
+              <div class="project-logo-wrap aurea-logo-wrap">
+                <img src="/proyectos/aurea-logo.png" alt="Logo AUREA Beauty" />
+              </div>
+
+              <div>
+                <div class="project-badge">Sistema web + App Android</div>
+                <div class="status-badge online">● En producción</div>
+              </div>
+            </div>
 
             <h3>💄 AUREA Beauty Salon</h3>
 
@@ -154,6 +163,13 @@
               Plataforma profesional para salones de belleza con gestión de clientes,
               citas, servicios, pagos, calendario, reportes, historial y aplicación móvil.
             </p>
+
+            <div class="project-meta">
+              <span>🌐 Frontend: Vercel</span>
+              <span>⚙️ Backend: Render</span>
+              <span>🗄️ Base de datos: Neon PostgreSQL</span>
+              <span>📱 App: Android con Capacitor</span>
+            </div>
 
             <div class="feature-list">
               <span>✔ Dashboard administrativo</span>
@@ -167,19 +183,29 @@
             <div class="chips">
               <q-chip>Laravel</q-chip>
               <q-chip>Quasar</q-chip>
+              <q-chip>Vue 3</q-chip>
               <q-chip>PostgreSQL</q-chip>
               <q-chip>Capacitor</q-chip>
               <q-chip>Vercel</q-chip>
               <q-chip>Render</q-chip>
             </div>
 
-            <div class="q-mt-lg">
+            <div class="project-actions">
               <q-btn
                 label="Ver Proyecto"
                 icon="visibility"
                 class="btn-primary"
                 unelevated
                 to="/proyecto/aurea"
+              />
+
+              <q-btn
+                label="Ver sitio web"
+                icon="open_in_new"
+                class="btn-outline"
+                unelevated
+                href="https://glamur-frontend.vercel.app"
+                target="_blank"
               />
             </div>
           </div>
@@ -208,7 +234,16 @@
           </div>
 
           <div class="case-info">
-            <div class="project-badge green">Sistema administrativo</div>
+            <div class="project-top">
+              <div class="project-logo-wrap carlafit-logo-wrap">
+                <img src="/proyectos/carlafit-logo.png" alt="Logo CarlaFit" />
+              </div>
+
+              <div>
+                <div class="project-badge green">Sistema administrativo</div>
+                <div class="status-badge testing">● Operativo / En mejora</div>
+              </div>
+            </div>
 
             <h3>🏋️ CarlaFit</h3>
 
@@ -216,6 +251,13 @@
               Sistema para gimnasio y centro fitness con control de zumberas,
               pagos, inscripciones, asistencias, grupos, servicios y centro de mensajes.
             </p>
+
+            <div class="project-meta">
+              <span>🧾 Pagos con QR</span>
+              <span>👥 Control de grupos</span>
+              <span>📲 Web + Android</span>
+              <span>💬 Centro de mensajes</span>
+            </div>
 
             <div class="feature-list">
               <span>✔ Dashboard de control</span>
@@ -234,13 +276,22 @@
               <q-chip>Android</q-chip>
             </div>
 
-            <div class="q-mt-lg">
+            <div class="project-actions">
               <q-btn
                 label="Ver Proyecto"
                 icon="visibility"
                 class="btn-secondary"
                 unelevated
                 to="/proyecto/carlafit"
+              />
+
+              <q-btn
+                label="Solicitar similar"
+                icon="chat"
+                class="btn-outline"
+                unelevated
+                href="https://wa.me/59163285735?text=Hola%20AGR%20Studio,%20quiero%20un%20sistema%20parecido%20a%20CarlaFit."
+                target="_blank"
               />
             </div>
           </div>
@@ -597,16 +648,23 @@ function scrollToSection(id) {
   font-weight: 700;
 }
 
-.actions {
+.actions,
+.project-actions {
   display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 34px;
+  justify-content: flex-start;
+  gap: 14px;
+  margin-top: 28px;
   flex-wrap: wrap;
 }
 
+.hero .actions {
+  justify-content: center;
+  margin-top: 34px;
+}
+
 .btn-primary,
-.btn-secondary {
+.btn-secondary,
+.btn-outline {
   color: white;
   border-radius: 16px;
   padding: 11px 20px;
@@ -622,8 +680,14 @@ function scrollToSection(id) {
   background: linear-gradient(90deg, #8a2be2, #bd35ff);
 }
 
+.btn-outline {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
 .btn-primary:hover,
-.btn-secondary:hover {
+.btn-secondary:hover,
+.btn-outline:hover {
   transform: translateY(-3px);
   filter: brightness(1.1);
 }
@@ -758,19 +822,84 @@ function scrollToSection(id) {
   line-height: 1.7;
 }
 
-.project-badge {
+.project-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.project-logo-wrap {
+  width: 86px;
+  height: 86px;
+  border-radius: 24px;
+  padding: 6px;
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.project-logo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.aurea-logo-wrap {
+  background: rgba(233,30,99,0.14);
+}
+
+.carlafit-logo-wrap {
+  width: 150px;
+  background: rgba(138,43,226,0.12);
+}
+
+.project-badge,
+.status-badge {
   display: inline-block;
   padding: 7px 14px;
   border-radius: 999px;
+  font-weight: 800;
+  margin: 0 8px 8px 0;
+}
+
+.project-badge {
   background: rgba(0,170,255,0.15);
   color: #70cfff;
-  font-weight: 800;
-  margin-bottom: 14px;
 }
 
 .project-badge.green {
   background: rgba(0,200,120,0.16);
   color: #3cffaa;
+}
+
+.status-badge.online {
+  background: rgba(0,200,120,0.16);
+  color: #3cffaa;
+}
+
+.status-badge.testing {
+  background: rgba(255,193,7,0.16);
+  color: #ffd166;
+}
+
+.project-meta {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.project-meta span {
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.07);
+  color: #f1f1ff;
+  font-weight: 700;
+  font-size: .93rem;
 }
 
 /* CASES */
@@ -1165,6 +1294,10 @@ function scrollToSection(id) {
   .footer div {
     align-items: center;
   }
+
+  .project-actions {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1174,6 +1307,19 @@ function scrollToSection(id) {
 
   .about-main {
     grid-column: auto;
+  }
+
+  .project-top {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .case-info {
+    text-align: center;
+  }
+
+  .project-meta {
+    text-align: left;
   }
 }
 
@@ -1197,6 +1343,10 @@ function scrollToSection(id) {
   .footer {
     text-align: center;
     justify-content: center;
+  }
+
+  .carlafit-logo-wrap {
+    width: 130px;
   }
 }
 </style>
